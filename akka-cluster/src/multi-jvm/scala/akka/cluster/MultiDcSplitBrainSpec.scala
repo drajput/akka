@@ -115,7 +115,7 @@ abstract class MultiDcSplitBrainSpec
     barrierCounter += 1
 
     runOn(memberNodes: _*) {
-      probe.expectMsgType[ReachableDataCenter](15.seconds)
+      probe.expectMsgType[ReachableDataCenter](25.seconds)
       cluster.unsubscribe(probe.ref)
       awaitAssert {
         cluster.state.unreachableDataCenters should ===(Set.empty)
