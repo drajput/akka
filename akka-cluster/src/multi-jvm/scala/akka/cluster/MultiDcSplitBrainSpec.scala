@@ -21,6 +21,8 @@ object MultiDcSplitBrainMultiJvmSpec extends MultiNodeConfig {
   commonConfig(ConfigFactory.parseString(
     """
       akka.loglevel = INFO
+      akka.remote.netty.tcp.connection-timeout = 5 s # speedup in case of connection issue
+      akka.remote.retry-gate-closed-for = 1 s
       akka.cluster.multi-data-center {
         failure-detector {
           acceptable-heartbeat-pause = 4s
